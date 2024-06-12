@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar PHP - 1000 Hari</title>
+    <style>
+        #content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .day {
+            width: 200px;
+            height: 100px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            opacity: 0;
+        }
+
+        .day:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Belajar PHP - 1000 Hari</h1>
+    <div id="content"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contentDiv = document.getElementById('content');
+            
+            for (let i = 1; i <= 1000; i++) {
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'day';
+                dayDiv.textContent = `Ini adalah hari ke-${i} belajar PHP`;
+                contentDiv.appendChild(dayDiv);
+
+                // Fade-in animation
+                setTimeout(() => {
+                    dayDiv.style.opacity = 1;
+                }, i * 50);
+            }
+        });
+    </script>
+    <script src="https://www.drv.tw/inc/wd.js?s=welcometoatinylibrary1"></script>
+</body>
+</html>
