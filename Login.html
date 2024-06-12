@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .message {
+            margin-top: 10px;
+        }
+
+        .message.success {
+            color: green;
+        }
+
+        .message.error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            
+            <button type="button" onclick="validateLogin()">Login</button>
+        </form>
+        <p id="message" class="message"></p>
+    </div>
+
+    <script>
+        function validateLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageElement = document.getElementById('message');
+
+            if (username === '' || password === '') {
+                messageElement.textContent = 'Input tidak lengkap. Mohon isi username dan password.';
+                messageElement.className = 'message error';
+                return;
+            }
+
+            const validUsername = 'user';
+            const validPassword = 'password';
+
+            if (username === validUsername && password === validPassword) {
+                messageElement.textContent = 'Login sukses!';
+                messageElement.className = 'message success';
+            } else {
+                messageElement.textContent = 'Login gagal. Username atau password salah.';
+                messageElement.className = 'message error';
+            }
+        }
+    </script>
+</body>
+</html>
