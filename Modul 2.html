@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Perpustakaan</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', sans-serif;
+      background-color: rgb(246, 250, 252);
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2 {
+      margin: 20px 0;
+      padding: 0;
+    }
+    center {
+      display: block;
+      text-align: center;
+    }
+    header {
+      background-color: rgb(43, 181, 206);
+      padding: 20px;
+      text-align: center;
+    }
+    footer {
+      background-color: rgb(43, 181, 206);
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      padding: 20px;
+      background-color: white;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: rgb(63, 149, 175);
+      color: white;
+    }
+    td {
+      background-color: rgb(246, 250, 252);
+    }
+    .menu {
+      margin-bottom: 20px;
+      justify-content: space-between;
+    }
+    .menu a {
+      color: white;
+      background-color: rgb(43, 181, 206);
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      justify-content: space-between;
+    }
+    .menu a:hover {
+      background-color: rgb(63, 149, 175);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FORMULIR PERPUSTAKAAN</h1>
+    <div class="menu">
+      <a href="index.html">Kembali</a>
+      <a href="modul 3.html">Selanjutnya</a>
+    </div>
+  </header>
+  <section>
+    <h2>FORM PERPANJANGAN MASA PINJAM</h2>
+    <p>Pengajuan Perpanjangan Masa Pinjam Buku secara online hanya akan dilayani apabila dilakukan pada hari dan jam kerja (Senin s.d Jumat pukul 08.00-15.30), peminjaman belum melebihi tenggat waktu pengembalian, serta hanya dapat dilakukan satu kali di setiap peminjaman untuk buku yang sama.</p>
+    <form action="" method="POST">
+      <fieldset>
+        <table>
+          <tr>
+            <td>Member ID</td>
+            <td><input type ="text"></td>
+          </tr>
+          <tr>
+            <td>Kode Eksemplar</td>
+            <td><input type = "text"></td>
+          </tr> 
+          <tr>
+            <td></td>
+            <td>
+              <input type="submit" value="Submit">
+              <input type="reset" value="Reset">
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
+  </section>
+  <section>
+    <h2>FORM KEANGGOTAAN PERPUSTAKAAN</h2>
+    <table border ="1">
+      <th colspan="2">FORMULIR ANGGOTA PERPUSTAKAAN SAINS DAN INFORMASI</th>
+      <tr>
+        <td>NAMA<br>NIM<br>ALAMAT<br>JENIS KELAMIN<br>EMAIL<br>NO.HP<br>TEMPAT LAHIR<br>TANGGAL LAHIR</td>
+        <td>Brananta Nikolase Brahmana<br>210709042<br>Jl.Berdikari<br>laki-laki<br>branantanikolasebrahmana989@gmail.com<br>081263874952<br>Medan<br>1 November 2002</td>
+      </tr>
+    </table>
+  </section>
+  <section>
+    <h2>FORM PEMESANAN BUKU</h2>
+    <form action="contact.php" method="POST">
+      <fieldset>
+        <table>
+          <tr>
+            <td>Nama Customer</td>
+            <td><input type ="text"></td>
+          </tr>
+          <tr>
+            <td>Jenis Kelamin</td>
+            <td>
+              <input type="radio" name="jk"> laki-laki
+              <input type="radio" name="jk"> perempuan 
+            </td>
+          </tr>
+          <tr>
+            <td>Tanggal Pemesanan</td>
+            <td><input type="date" name="tanggal"/></td>
+          </tr>
+          <tr>
+            <td><label>Alamat</label></td>
+            <td><input type="text" name="name"/></td>
+          </tr>
+          <tr>
+            <td><label>Judul Buku</label></td>
+            <td><input type="text" name="name"/></td>
+          </tr>
+          <tr>
+            <td><label>Pengarang</label></td>
+            <td><input type="text" name="name"/></td>
+          </tr>
+          <tr>
+            <td><label>Jumlah Buku</label></td>
+            <td><input type="text" name="name"/></td>
+            <td>
+              <input type="submit" value="Submit">
+              <input type="reset" value="Reset">
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
+  </section>
+  <section>
+    <h2>TABEL KOLEKSI BUKU</h2>
+    <table border="1">
+      <tr>
+        <th>Judul</th>
+        <th>No. klasifikasi</th>
+        <th>No. Panggil</th>
+        <th>Pengarang</th>
+        <th>Subjek</th>
+        <th>Nama Penerbit</th>
+        <th>Tahun Terbit</th> 
+      </tr>
+      <tr>
+        <td>36 Jam Belajar Komputer</td>
+        <td>005.2</td>
+        <td>005.2 Per t</td>
+        <td>Permana,Budi</td>
+        <td>-</td>
+        <td>Pustaka Rihlah</td>
+        <td>2000</td>
+      </tr>
+      <tr>
+        <td>100% diet sehat & sehat</td>
+        <td>613.2</td>
+        <td>613.2 Sar s</td>
+        <td>Saraswati,Neyla Putri</td>
+        <td>DIET THERAPY</td>
+        <td>Sweet and Maxwell</td>
+        <td>2013</td>
+      </tr>
+      <tr>
+        <td>10 Prinsip Kepuasan Pelanggan</td>
+        <td>658.812</td>
+        <td>658.812 Ira s</td>
+        <td>Irawan,Handi</td>
+        <td>CUSTOMER SATISFACTION</td>
+        <td>Gramedia</td>
+        <td>2003</td>
+      </tr>
+    </table>
+  </section>
+  <footer>
+    <p>&copy; 2024 Formulir Perpustakaan - Brananta Nikolase Brahmana</p>
+  </footer>
+</body>
+</html>

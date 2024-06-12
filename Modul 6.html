@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Plugin Example with Animation</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+// Membuat plugin jQuery bernama "highlight"
+(function($) {
+    $.fn.highlight = function() {
+        // Loop melalui setiap elemen dalam objek jQuery
+        this.each(function() {
+            // Mengubah warna latar belakang menjadi kuning dengan animasi fadeIn
+            $(this).css('background-color', 'yellow').hide().fadeIn(1000);
+        });
+        // Mengembalikan objek jQuery untuk chaining
+        return this;
+    };
+}(jQuery));
+
+// Menggunakan plugin pada elemen dengan kelas "highlightable"
+$(document).ready(function() {
+    $('.highlightable').highlight();
+});
+</script>
+<style>
+    /* Gaya untuk membedakan elemen yang dapat di-highlight */
+    .highlightable {
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+    }
+</style>
+</head>
+<body>
+<!-- Contoh penggunaan plugin pada elemen dengan kelas "highlightable" -->
+<div class="highlightable">Element 1</div>
+<div class="highlightable">Element 2</div>
+<div class="highlightable">Element 3</div>
+</body>
+</html>
