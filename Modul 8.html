@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database Perpustakaan</title>
+    <title>Library Database</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,129 +12,163 @@
             background-color: #f4f4f4;
         }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
         h1 {
-            margin: 0;
+            text-align: center;
+            padding: 20px 0;
+            color: #333;
         }
 
-        main {
-            max-width: 800px;
+        table {
+            width: 80%;
             margin: 20px auto;
-            padding: 20px;
+            border-collapse: collapse;
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
-        .form-container {
-            margin-bottom: 20px;
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
         }
 
         form {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        form div {
-            margin-bottom: 10px;
-            flex: 1;
-            padding-right: 10px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
 
         input[type="text"],
         input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            border-radius: 4px;
+            width: calc(100% - 10px);
+            padding: 10px;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
         button {
-            padding: 8px 20px;
-            background-color: #333;
-            color: #fff;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
         }
 
         button:hover {
-            background-color: #555;
+            background-color: #45a049;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
 
-        th, td {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
-        }
-
-        .action-buttons button {
-            margin-right: 5px;
+            form {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Database Perpustakaan</h1>
-    </header>
-    <main>
-        <div class="form-container">
-            <form id="bookForm">
-                <input type="hidden" id="bookId" value="">
-                <div>
-                    <label for="title">Judul Buku:</label>
-                    <input type="text" id="title" required>
-                </div>
-                <div>
-                    <label for="author">Penulis:</label>
-                    <input type="text" id="author" required>
-                </div>
-                <div>
-                    <label for="year">Tahun Terbit:</label>
-                    <input type="number" id="year" required>
-                </div>
-                <div>
-                    <label for="genre">Genre:</label>
-                    <input type="text" id="genre" required>
-                </div>
-                <button type="submit">Simpan</button>
-                <button type="button" id="cancelButton">Batal</button>
-            </form>
-        </div>
-        <table id="libraryTable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Judul Buku</th>
-                    <th>Penulis</th>
-                    <th>Tahun Terbit</th>
-                    <th>Genre</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </main>
+    <h1>Library Database</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Judul</th>
+                <th>Penulis</th>
+                <th>Tahun</th>
+                <th>ISBN</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody id="libraryBody">
+            <!-- Data rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <form id="libraryForm">
+        <input type="hidden" id="editIndex">
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="number" id="year" placeholder="Year" required>
+        <input type="text" id="isbn" placeholder="ISBN" required>
+        <button type="button" onclick="addOrUpdateBook()">Tambah/Perbarui</button>
+    </form>
+
     <script>
-        // JavaScript code remains the same
+        let libraryData = [
+    { title: "The Architecture of Love", author: "Ika Natassa", year: 2021, isbn: "9786020329260" },
+    { title: "Detektif Conan 104", author: "Gosho AOYAMA", year: 2024, isbn: "9786230057908" },
+    { title: "Leadership Mastery", author: "Dale Carnegie", year: 2018, isbn: "9789792251784" },
+    { title: "Logika Asa", author: "Valerie Patkar", year: 2024, isbn: "9786230417863" },
+];
+
+document.addEventListener("DOMContentLoaded", function() {
+    displayLibrary();
+});
+
+function displayLibrary() {
+    const tbody = document.getElementById('libraryBody');
+    tbody.innerHTML = "";
+    libraryData.forEach((book, index) => {
+        const row = tbody.insertRow();
+        row.innerHTML = `
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.year}</td>
+            <td>${book.isbn}</td>
+            <td>
+                <button onclick="editBook(${index})">Edit</button>
+                <button onclick="deleteBook(${index})">Hapus</button>
+            </td>
+        `;
+    });
+}
+
+function addOrUpdateBook() {
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const year = document.getElementById('year').value;
+    const isbn = document.getElementById('isbn').value;
+    const editIndex = document.getElementById('editIndex').value;
+
+    const book = { title, author, year, isbn };
+
+    if (editIndex === "") {
+        libraryData.push(book);
+    } else {
+        libraryData[editIndex] = book;
+        document.getElementById('editIndex').value = "";
+    }
+
+    document.getElementById('libraryForm').reset();
+    displayLibrary();
+}
+
+function editBook(index) {
+    const book = libraryData[index];
+    document.getElementById('title').value = book.title;
+    document.getElementById('author').value = book.author;
+    document.getElementById('year').value = book.year;
+    document.getElementById('isbn').value = book.isbn;
+    document.getElementById('editIndex').value = index;
+}
+
+function deleteBook(index) {
+    libraryData.splice(index, 1);
+    displayLibrary();
+}
+
     </script>
 </body>
 </html>
